@@ -25,6 +25,7 @@ bounty3 = Bounty.new({
 
 bounty1.save
 bounty2.save
+bounty3.save
 
 bounty2.delete
 
@@ -35,7 +36,7 @@ bounty1.update()
 
 
 all_bounties = Bounty.all
-#binding.pry
+
 criminal = Bounty.find_by_name('Mabel')
 
 binding.pry
