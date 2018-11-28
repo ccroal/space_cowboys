@@ -27,7 +27,7 @@ class Bounty
   def Bounty.delete_all()
     db = PG.connect({dbname: 'space_cowboys', host: 'localhost'})
     sql = "DELETE FROM bounties"
-    db.prepare("delete_all",sql)
+    db.prepare("delete_all", sql)
     db.exec_prepared("delete_all")
     db.close
   end
@@ -67,9 +67,28 @@ class Bounty
     db.prepare("find_by_name", sql)
     specs = db.exec_prepared("find_by_name", values)
     db.close
-    specs_hash = specs[0]
+    if specs.count > 0
+      specs_hash = specs[0]
+    else
+      return nil
+    end
     bounty = Bounty.new(specs_hash)
     return bounty
   end
 
+  def Bounty.find_by_id(id)
+    db = PG.connect({dbname: 'space_cowboys', host: 'localhost'})
+    sql = "SELECT * FROM bounties WHERE id = $1"
+    values = [id]
+    db.prepare("find_by_id", sql)
+    specs = db.exec_prepared("find_by_id", values)
+    db.close
+    if specs.count > 0
+      specs_hash = specs[0]
+    else
+      return nil
+    end
+      bounty = Bounty.new(specs_hash)
+    return bounty
+  end
 end

@@ -39,5 +39,8 @@ all_bounties = Bounty.all
 
 criminal = Bounty.find_by_name('Mabel')
 
+#find_id = Bounty.find_by_id('51')
+
+
 binding.pry
 nil
