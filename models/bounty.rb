@@ -8,7 +8,7 @@ class Bounty
   def initialize(spec)
     @name = spec['name']
     @danger_level = spec['danger_level']
-    @value = spec['value'].to_i
+    @value = spec['value']
     @homeworld = spec['homeworld']
     @id = spec['id'].to_i if spec['id']
   end

@@ -5,21 +5,21 @@ Bounty.delete_all
 bounty1 = Bounty.new({
   'name' => 'Jim',
   'danger_level' => 'high',
-  'value' => '500',
+  'value' => 500,
   'homeworld' => 'Pluto'
   })
 
 bounty2 = Bounty.new({
   'name' => 'Bob',
   'danger_level' => 'medium',
-  'value' => '150',
+  'value' => 150,
   'homeworld' => 'Tattooine'
   })
 
 bounty3 = Bounty.new({
   'name' => 'Mabel',
-  'danger_level' => 'ermagerdyermaderd',
-  'value' => '502',
+  'danger_level' => 'ermagerdyermagerd',
+  'value' => 502,
   'homeworld' => 'Zolac'
   })
 
