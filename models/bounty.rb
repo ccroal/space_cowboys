@@ -20,7 +20,7 @@ class Bounty
     VALUES ($1, $2, $3, $4) RETURNING *"
     values = [@name, @danger_level, @value, @homeworld]
     db.prepare("save", sql)
-    @id = db.exec_prepared("save", values)[0]["id"].to_i
+    @id = db.exec_prepared("save", values)[0]["id"]
     db.close
   end
 
@@ -69,11 +69,10 @@ class Bounty
     db.close
     if specs.count > 0
       specs_hash = specs[0]
-    else
-      return nil
+      bounty = Bounty.new(specs_hash)
+      return bounty
     end
-    bounty = Bounty.new(specs_hash)
-    return bounty
+    return nil
   end
 
   def Bounty.find_by_id(id)
@@ -85,10 +84,10 @@ class Bounty
     db.close
     if specs.count > 0
       specs_hash = specs[0]
-    else
-      return nil
-    end
       bounty = Bounty.new(specs_hash)
-    return bounty
+      return bounty
+    end
+    return nil
   end
+
 end
